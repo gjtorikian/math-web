@@ -1,12 +1,8 @@
-PATH
-  remote: /Users/brandon/sandbox/mathematical
-  specs:
-    mathematical (0.0.2.b)
-
 GEM
   remote: https://rubygems.org/
   specs:
     diff-lcs (1.2.5)
+    mathematical (0.0.2.bkeepers)
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
@@ -33,7 +29,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  mathematical!
+  mathematical (= 0.0.2.bkeepers)
   rack-test
   rake
   rspec
