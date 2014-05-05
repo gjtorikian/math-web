@@ -1,0 +1,16 @@
+#content {
+  margin: 10% auto 0 auto;
+  width: 400px;
+}
+
+#content textarea {
+  width: 100%;
+  height: 5em;
+  font-size: 1.2em;
+  padding: 10px;
+}
+
+#content .actions {
+  margin-top: 1em;
+  text-align: right;
+}

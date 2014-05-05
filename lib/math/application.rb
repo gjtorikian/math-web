@@ -2,7 +2,9 @@ require_relative '../../config/environment'
 
 module Math
   class Application < Sinatra::Base
-    set :views, File.expand_path('../../../views', __FILE__)
+    set :root, Pathname.new(File.expand_path('../../..', __FILE__))
+    set :views, root.join('views')
+    set :public, root.join('public')
 
     get "/" do
       erb :index
