@@ -1,5 +1,9 @@
+body {
+  font: 14/21px "Helvetica Neue", sans-serif; 
+}
+
 #content {
-  margin: 10% auto 0 auto;
+  margin: 10% auto;
   width: 400px;
 }
 
@@ -13,4 +17,16 @@
 #content .actions {
   margin-top: 1em;
   text-align: right;
+}
+
+#output {
+  background-color: #f1f1f1;
+  border: 1px solid #eee;
+  border-radius: 2px;
+  padding: 10px;
+}
+
+#url {
+  width: 300px;
+  padding: 5px;
 }
