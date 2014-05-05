@@ -8,6 +8,11 @@
       <form action="/formula" method="GET">
         <textarea name="formula"></textarea>
         <div class="actions">
+          <label for="mode">Mode:</label>
+          <select name="mode">
+            <option value="inline">Inline</option>
+            <option value="displayed">Displayed</option>
+          </select>
           <button>Render</button>
         </div>
       </form>
