@@ -29,10 +29,11 @@ module Math
 
     def to_svg(formula)
       tempfile = Tempfile.new('mathematical')
-      status = mathmatical.process(formula, tempfile.path)
-      raise RuntimeError unless status
+      mathmatical.process(formula, tempfile.path) || halt(422)
       tempfile.rewind
-      tempfile.read
+      tempfile.read.tap do
+        tempfile.close
+      end
     end
   end
 end
