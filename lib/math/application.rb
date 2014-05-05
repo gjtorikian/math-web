@@ -4,7 +4,7 @@ module Math
   class Application < Sinatra::Base
     set :root, Pathname.new(File.expand_path('../../..', __FILE__))
     set :views, root.join('views')
-    set :public, root.join('public')
+    set :public_folder, root.join('public')
 
     Modes = {
       'inline'    => lambda { |equation|  "$#{equation}$" },
