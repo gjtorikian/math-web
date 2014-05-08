@@ -4,11 +4,10 @@ $(document).on('submit change keyup', 'form', function(e) {
   $('#result').show();
 
   var img = document.createElement('img');
-  img.src = this.action + '?' + $(this).serialize();
-  $('#output').empty().append(img);
-  $('#url').val(img.src);
-
-  $(img).on('error', function() {
-    $('#output').empty();
+  $(img).on('load', function() {
+    $('#output').empty().append(img);
+    $('#url').val(img.src);
   });
+
+  img.src = this.action + '?' + $(this).serialize();
 });
