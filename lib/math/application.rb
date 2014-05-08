@@ -1,4 +1,5 @@
 require_relative '../../config/environment'
+require 'digest/md5'
 
 module Math
   class Application < Sinatra::Base
@@ -11,12 +12,16 @@ module Math
       'displayed' => lambda { |equation|  "$$#{equation}$$" }
     }
 
+    EtagVersion = '1'
+
     get "/" do
       erb :index
     end
 
     %w(/render /render/:maths).each do |path|
       get path do
+        cache_control :public
+        etag Digest::MD5.hexdigest(EtagVersion + params.inspect)
         mode = Modes[params['mode']] || Modes['inline']
         content_type 'image/svg+xml'
         to_svg(mode.call(params['maths']))
