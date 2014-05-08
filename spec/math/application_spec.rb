@@ -7,9 +7,9 @@ describe Math::Application do
     Math::Application
   end
 
-  describe 'GET /formula' do
-    subject { get "/formula", params }
-    let(:params) { {:formula => "X"} }
+  describe 'GET /render' do
+    subject { get "/render", params }
+    let(:params) { {:maths => "X"} }
 
     it "responds with success" do
       expect(subject).to be_ok
@@ -20,4 +20,18 @@ describe Math::Application do
       expect(subject.body).to include("<svg")
     end
   end
+
+  describe 'GET /render/:maths' do
+    subject { get "/render/X" }
+
+    it "responds with success" do
+      expect(subject).to be_ok
+    end
+
+    it "renders svg" do
+      expect(subject.content_type).to eql('image/svg+xml')
+      expect(subject.body).to include("<svg")
+    end
+  end
+
 end

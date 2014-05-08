@@ -15,10 +15,12 @@ module Math
       erb :index
     end
 
-    get "/formula" do
-      mode = Modes[params['mode']] || Modes['inline']
-      content_type 'image/svg+xml'
-      to_svg(mode.call(params['formula']))
+    %w(/render /render/:maths).each do |path|
+      get path do
+        mode = Modes[params['mode']] || Modes['inline']
+        content_type 'image/svg+xml'
+        to_svg(mode.call(params['maths']))
+      end
     end
 
   private
