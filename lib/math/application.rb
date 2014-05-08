@@ -12,7 +12,7 @@ module Math
       'displayed' => lambda { |equation|  "$$#{equation}$$" }
     }
 
-    EtagVersion = '1'
+    EtagVersion = "#{Mathematical::VERSION}.1"
     MaxAge = 30 * 24 * 60 * 60 # 30 days
 
     get "/" do
