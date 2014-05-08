@@ -2,7 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     diff-lcs (1.2.5)
-    mathematical (0.0.2.bkeepers)
+    mathematical (0.0.4)
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
@@ -29,7 +29,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  mathematical (= 0.0.2.bkeepers)
+  mathematical (= 0.0.4)
   rack-test
   rake
   rspec
