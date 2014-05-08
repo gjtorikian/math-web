@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rake'
 gem 'sinatra'
-gem 'mathematical', '0.0.2.bkeepers'
+gem 'mathematical', '0.0.4'
 
 group :test do
   gem 'rspec'
