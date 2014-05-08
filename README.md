@@ -19,7 +19,4 @@ Start the local server with:
 
     $ script/server
 
-Test it out:
-
-    $ curl -X GET 'http://localhost:9393/formula' -d formula='X'
-    <h1>Hello World</h1>
+Test it out by viewing http://localhost:9393/render/%5Cpi%20r%5E2?mode=inline in your browser.
