@@ -19,4 +19,4 @@ Start the local server with:
 
     $ script/server
 
-Test it out by viewing http://localhost:9393/render/%5Cpi%20r%5E2?mode=inline in your browser.
+Test it out by viewing <a href="http://localhost:9393/render/%5Cpi%20r%5E2?mode=inline">$\pi r^2$</a> in your browser.
