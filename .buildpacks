@@ -1,2 +1,2 @@
-https://github.com/gjtorikian/heroku-buildpack-pango.git
-https://github.com/heroku/heroku-buildpack-ruby.git
+https://github.com/gjtorikian/heroku-buildpack-pango.git#debugging
+https://github.com/bkeepers/heroku-buildpack-ruby.git
