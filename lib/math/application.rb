@@ -19,13 +19,13 @@ module Math
       erb :index
     end
 
-    %w(/render /render/:maths).each do |path|
+    %w(/render /render/:math).each do |path|
       get path do
         cache_control :public, :max_age => MaxAge
         etag Digest::MD5.hexdigest(EtagVersion + params.inspect)
         mode = Modes[params['mode']] || Modes['inline']
         content_type 'image/svg+xml'
-        to_svg(mode.call(params['maths']))
+        to_svg(mode.call(params['math']))
       end
     end
 

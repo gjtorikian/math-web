@@ -9,7 +9,7 @@ describe Math::Application do
 
   describe 'GET /render' do
     subject { get "/render", params }
-    let(:params) { {:maths => "X"} }
+    let(:params) { {:math => "X"} }
 
     it "responds with success" do
       expect(subject).to be_ok
@@ -21,7 +21,7 @@ describe Math::Application do
     end
   end
 
-  describe 'GET /render/:maths' do
+  describe 'GET /render/:math' do
     subject { get "/render/X" }
 
     it "responds with success" do
