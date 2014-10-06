@@ -1,5 +1,6 @@
 require_relative '../../config/environment'
 require 'digest/md5'
+require 'uri'
 
 module Math
   class Application < Sinatra::Base
@@ -16,32 +17,27 @@ module Math
     MaxAge = 30 * 24 * 60 * 60 # 30 days
 
     get "/" do
-      erb :index
+      "Well hello there."
     end
 
-    %w(/render /render/:math).each do |path|
-      get path do
-        cache_control :public, :max_age => MaxAge
-        etag Digest::MD5.hexdigest(EtagVersion + params.inspect)
-        mode = Modes[params['mode']] || Modes['inline']
-        content_type 'image/svg+xml'
-        to_svg(mode.call(params['math']))
-      end
+    get "/render" do
+      cache_control :public, :max_age => MaxAge
+      etag Digest::MD5.hexdigest(EtagVersion + params.inspect)
+      mode = Modes[params['mode']] || Modes['inline']
+      math = params['math']
+      content_type 'image/svg+xml'
+      return to_svg(mode.call(math))["svg"]
     end
 
   private
 
     def mathmatical
-      @mathmatical ||= Mathematical::Process.new(Mathematical::Render::DEFAULT_OPTS)
+      @mathmatical ||= Mathematical::Render.new
     end
 
     def to_svg(formula)
-      tempfile = Tempfile.new('mathematical')
-      mathmatical.process(formula, tempfile.path) || halt(422)
-      tempfile.rewind
-      tempfile.read.tap do
-        tempfile.close
-      end
+      formula = URI.decode formula
+      mathmatical.render(formula) || halt(422)
     end
   end
 end
