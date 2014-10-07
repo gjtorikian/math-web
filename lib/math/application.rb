@@ -16,8 +16,22 @@ module Math
     EtagVersion = "#{Mathematical::VERSION}.1"
     MaxAge = 30 * 24 * 60 * 60 # 30 days
 
+    before do
+      if self.class.development?
+        headers 'Access-Control-Allow-Origin' => '*',
+                'Access-Control-Allow-Methods' => ['OPTIONS', 'GET']
+      else
+        headers 'Access-Control-Allow-Origin' => '*',
+                'Access-Control-Allow-Methods' => ['OPTIONS', 'GET']
+      end
+    end
+
     get "/" do
       "Well hello there."
+    end
+
+    options '/render' do
+        200
     end
 
     get "/render" do
@@ -25,8 +39,12 @@ module Math
       etag Digest::MD5.hexdigest(EtagVersion + params.inspect)
       mode = Modes[params['mode']] || Modes['inline']
       math = params['math']
-      content_type 'image/svg+xml'
-      return to_svg(mode.call(math))["svg"]
+      if request.xhr?
+        content_type 'text/plain'
+      else
+        content_type 'image/svg+xml'
+      end
+      to_svg(mode.call(math))['svg']
     end
 
   private
@@ -36,7 +54,7 @@ module Math
     end
 
     def to_svg(formula)
-      formula = URI.decode formula
+      formula = URI.decode(formula).sub(/\\\\/, "\\\\\\\\")
       mathmatical.render(formula) || halt(422)
     end
   end
