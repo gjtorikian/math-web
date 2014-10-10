@@ -1,12 +1,15 @@
 require_relative '../../config/environment'
 require 'digest/md5'
 require 'uri'
+require 'rack/ssl-enforcer'
 
 module Math
   class Application < Sinatra::Base
     set :root, Pathname.new(File.expand_path('../../..', __FILE__))
     set :views, root.join('views')
     set :public_folder, root.join('public')
+
+    use Rack::SslEnforcer
 
     Modes = {
       'inline'    => lambda { |equation|  "$#{equation}$" },
