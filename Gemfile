@@ -4,6 +4,7 @@ gem 'rake'
 gem 'sinatra'
 gem 'mathematical'
 gem 'rack-ssl-enforcer'
+gem 'unicorn'
 
 group :test do
   gem 'rspec'
@@ -12,4 +13,6 @@ end
 
 group :development do
   gem 'shotgun'
+  gem 'mina'
+  gem 'mina-unicorn', :require => false
 end
