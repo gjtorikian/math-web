@@ -47,13 +47,13 @@ module Math
       else
         content_type 'image/svg+xml'
       end
-      to_svg(mode.call(math))['svg']
+      to_svg(mode.call(math))[:data]
     end
 
   private
 
     def mathmatical
-      @mathmatical ||= Mathematical::Render.new
+      @mathmatical ||= Mathematical.new
     end
 
     def to_svg(formula)
