@@ -9,7 +9,7 @@ module Math
     set :views, root.join('views')
     set :public_folder, root.join('public')
 
-    use Rack::SslEnforcer
+    use Rack::SslEnforcer unless self.class.development?
 
     Modes = {
       'inline'    => lambda { |equation|  "$#{equation}$" },
@@ -58,7 +58,7 @@ module Math
 
     def to_svg(formula)
       formula = URI.decode(formula).sub(/\\\\/, "\\\\\\\\")
-      mathmatical.render(formula) || halt(422)
+      mathmatical.render(formula) || halt(406)
     end
   end
 end
