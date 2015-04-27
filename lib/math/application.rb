@@ -30,7 +30,7 @@ module Math
     end
 
     get "/" do
-      "Well hello there."
+      "Well hello there. I'm at #{Mathematical::VERSION}"
     end
 
     options '/render' do
