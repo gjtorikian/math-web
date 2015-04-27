@@ -58,7 +58,9 @@ module Math
 
     def to_svg(formula)
       formula = URI.decode(formula).sub(/\\\\/, "\\\\\\\\")
-      mathmatical.render(formula) || halt(406)
+      result = mathmatical.render(formula)
+      halt(406) if result[:exception]
+      result
     end
   end
 end
