@@ -9,7 +9,7 @@ module Math
     set :views, root.join('views')
     set :public_folder, root.join('public')
 
-    use Rack::SslEnforcer unless self.class.development?
+    use Rack::SslEnforcer
 
     Modes = {
       'inline'    => lambda { |equation|  "$#{equation}$" },
@@ -20,13 +20,8 @@ module Math
     MaxAge = 30 * 24 * 60 * 60 # 30 days
 
     before do
-      if self.class.development?
-        headers 'Access-Control-Allow-Origin' => '*',
-                'Access-Control-Allow-Methods' => ['OPTIONS', 'GET']
-      else
-        headers 'Access-Control-Allow-Origin' => '*',
-                'Access-Control-Allow-Methods' => ['OPTIONS', 'GET']
-      end
+      headers 'Access-Control-Allow-Origin' => '*',
+              'Access-Control-Allow-Methods' => ['OPTIONS', 'GET']
     end
 
     get "/" do
