@@ -51,6 +51,7 @@ task :deploy => :environment do
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
+    invoke :'bundle:binstubs:unicorn'
 
     to :launch do
       invoke :'unicorn:restart'
