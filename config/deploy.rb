@@ -5,11 +5,11 @@ require 'mina/rbenv'
 require 'mina/unicorn'
 
 set :rails_env, 'production'
-set :domain, '104.131.112.89'
-set :deploy_to, '/home/deployer/math-web'
+set :domain, '162.243.240.230'
+set :deploy_to, '/home/gjtorikian/math-web'
 set :repository, 'https://github.com/gjtorikian/math-web.git'
 set :branch, 'master'
-set :user, 'deployer'
+set :user, 'gjtorikian'
 set :forward_agent, true
 set :port, '22'
 set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
@@ -17,7 +17,6 @@ set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
 set :shared_paths, ['log']
-
 
 # This task is the environment that is loaded for most commands, such as
 # `mina deploy` or `mina rake`.

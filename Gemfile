@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rake'
 gem 'sinatra'
-gem 'mathematical', '1.2.0'
+gem 'mathematical', '1.5.12'
 gem 'rack-ssl-enforcer'
 gem 'unicorn'
 
