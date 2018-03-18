@@ -9,7 +9,7 @@ module Math
     set :views, root.join('views')
     set :public_folder, root.join('public')
 
-    use Rack::SslEnforcer
+    use Rack::SslEnforcer if Sinatra::Base.production?
 
     MODES = {
       'inline'    => lambda { |equation|  "$#{equation}$" },
